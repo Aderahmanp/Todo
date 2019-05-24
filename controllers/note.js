@@ -51,7 +51,8 @@ exports.update = (req, res) => {
     .then(data => {
       res.status(200).json({
         success: true,
-        message: data
+        message: "Successfuly",
+        data: data
       });
     })
     .catch(err => {
@@ -67,10 +68,28 @@ exports.delete = (req, res) => {
     .then(data => {
       res.status(200).json({
         success: true,
-        message: data
+        message: "Successfuly",
+        data: data
       });
     })
     .catch(err => {
+      res.status(400).json({
+        success: false,
+        message: err.message
+      });
+    });
+};
+
+exports.find = (req, res) => {
+  Note.findById(req.params.id)
+    .then(data => {
+      res.status(200).json({
+        success: true,
+        message: "Successfuly",
+        data: data
+      });
+    })
+    .catch(data => {
       res.status(400).json({
         success: false,
         message: err.message

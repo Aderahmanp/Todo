@@ -10,4 +10,6 @@ router.put("/notes/:id", noteController.update);
 
 router.delete("/notes/:id", noteController.delete);
 
+router.get("/notes/:id", noteController.find);
+
 module.exports = router;
