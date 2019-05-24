@@ -40,3 +40,24 @@ exports.allnote = (req, res) => {
       });
     });
 };
+
+exports.update = (req, res) => {
+  let note = Object.assign(req.body);
+  const update = {};
+  note.content ? (update.content = note.content) : null;
+  note.title ? (update.title = note.title) : null;
+
+  Note.findByIdAndUpdate(req.params.id, update, { new: true })
+    .then(data => {
+      res.status(200).json({
+        success: true,
+        message: data
+      });
+    })
+    .catch(err => {
+      res.status(400).json({
+        success: false,
+        message: err.message
+      });
+    });
+};

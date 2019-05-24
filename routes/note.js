@@ -6,4 +6,5 @@ router.post("/notes", noteController.create);
 
 router.get("/notes", noteController.allnote);
 
+router.put("/notes/:id", noteController.update);
 module.exports = router;
