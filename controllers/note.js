@@ -61,3 +61,19 @@ exports.update = (req, res) => {
       });
     });
 };
+
+exports.delete = (req, res) => {
+  Note.findByIdAndDelete(req.params.id)
+    .then(data => {
+      res.status(200).json({
+        success: true,
+        message: data
+      });
+    })
+    .catch(err => {
+      res.status(400).json({
+        success: false,
+        message: err.message
+      });
+    });
+};
